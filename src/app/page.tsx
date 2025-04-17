@@ -5,10 +5,11 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   const viagens = [
-    { titulo: "Trilha na Mata Atlântica", imagem: "/trilha.png", data: "20/05/2025" },
-    { titulo: "Rapel na Pedra do Baú", imagem: "/rapel.png", data: "28/05/2025" },
-    { titulo: "Exploração de Caverna", imagem: "/caverna.png", data: "05/06/2025" }
+    { slug: "trilha-na-mata-atlantica", titulo: "Trilha na Mata Atlântica", imagem: "/trilha.png", data: "20/05/2025", descricao: "Explore as belezas da Mata Atlântica em uma trilha inesquecível." },
+    { slug: "rapel-na-pedra-do-bau", titulo: "Rapel na Pedra do Baú", imagem: "/rapel.png", data: "28/05/2025", descricao: "Sinta a adrenalina de descer uma das rochas mais incríveis do Brasil." },
+    { slug: "exploracao-de-caverna", titulo: "Exploração de Caverna", imagem: "/caverna.png", data: "05/06/2025", descricao: "Aventure-se nas profundezas e descubra a beleza escondida das cavernas." }
   ];
+  
 
   return (
     <div className="flex flex-col min-h-screen">
