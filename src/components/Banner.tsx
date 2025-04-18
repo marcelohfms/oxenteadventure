@@ -32,7 +32,7 @@ export default function Banner() {
         textAlign: 'center',
         padding: '1rem'
       }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>Explore Aventuras Inesquecíveis</h2>
+        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>Descubra o poder transformador dos passeios na natureza com a Oxente Adventure!</h2>
         <a
           href="#viagens"
           style={{
