@@ -17,7 +17,7 @@ interface Passageiro {
 }
 
 export default function InscricaoViagem({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
+  const { slug } = params.slug;
 
   const [assentosSelecionados, setAssentosSelecionados] = useState<string[]>([]);
   const [assentosOcupados, setAssentosOcupados] = useState<string[]>([]);
