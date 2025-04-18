@@ -17,12 +17,12 @@ interface Passageiro {
 }
 
 // Define o tipo esperado para as props da página
-interface PageProps {
+interface InscricaoViagemProps {
   params: { slug: string };
-  // searchParams?: { [key: string]: string | string[] | undefined }; // Adicione se usar searchParams
+  searchParams?: { [key: string]: string | string[] | undefined }; // Adicione se usar searchParams
 }
 
-export default function InscricaoViagem({ params }: PageProps) {
+export default function InscricaoViagem({ params }: InscricaoViagemProps) {
   const slug = params.slug;
   const [assentosSelecionados, setAssentosSelecionados] = useState<string[]>([]);
   const [assentosOcupados, setAssentosOcupados] = useState<string[]>([]);
