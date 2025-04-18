@@ -1,9 +1,12 @@
-// app/viagem/[slug]/page.tsx (ou onde estiver seu arquivo)
+// src/app/viagem/[slug]/page.tsx
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { encontrarViagemPorSlug, Viagem } from "@/data/viagens";
+import Image from "next/image"; // <--- 1. Importar o componente Image
+// Importe APENAS a função (removida a interface Viagem)
+import { encontrarViagemPorSlug } from "@/data/viagens"; // <--- 2. Removida a importação de 'Viagem'
 
+// Componente ListaItem mantido igual
 const ListaItem = ({ children }: { children: React.ReactNode }) => (
   <li className="flex items-start mb-1">
     <span className="mr-2 text-orange-600 text-lg">›</span>
@@ -31,15 +34,20 @@ export default function DetalhesViagemPage({ params }: { params: { slug: string 
         <p className="text-center text-gray-600 font-semibold mb-6">{viagem.data}</p>
 
         {/* Imagem Principal - ALTERAÇÃO AQUI */}
-        <img
-          src={viagem.imagem}
-          alt={viagem.titulo}
-          // Removido: h-64, md:h-80, object-cover
-          // Mantido: w-full, rounded-lg, shadow-md, mb-8
-          // Opcional: Adicionar um fundo enquanto carrega
-          className="w-full rounded-lg shadow-md mb-8 bg-gray-100"
-          loading="lazy" // Adicionado para melhor performance
-        />
+        {/* Usando um container relativo para o Image com 'fill' */}
+        <div className="relative w-full h-64 md:h-80 rounded-lg shadow-md overflow-hidden mb-8 bg-gray-100">
+          <Image
+            src={viagem.imagem}
+            alt={viagem.titulo}
+            // fill={true} // Faz a imagem preencher o container pai (requer pai com position)
+            layout="fill" // Alternativa a 'fill' para Next.js mais antigo ou dependendo da config
+            objectFit="cover" // Equivalente a object-cover do Tailwind
+            className="rounded-lg" // Mantém as bordas arredondadas
+            priority // Pode ser útil para a imagem principal da página (LCP)
+            // Não precisa mais de w-full ou h-* aqui, pois 'fill' controla isso
+            // width e height não são usados com fill/layout="fill"
+          />
+        </div>
         {/* Fim da Alteração na Imagem */}
 
 

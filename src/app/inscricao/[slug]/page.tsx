@@ -334,7 +334,6 @@ export default function InscricaoViagem({ params }: { params: Promise<{ slug: st
                        required={souClienteAntigo}
                        aria-describedby="codigoHelp"
                      />
-                     <p id="codigoHelp" className="text-xs text-gray-500 mt-1">Use o código "SOUOXENTE" para teste.</p>
                   </div>
                )}
              </div>
