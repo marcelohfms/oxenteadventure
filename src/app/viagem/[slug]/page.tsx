@@ -6,6 +6,12 @@ import Image from "next/image"; // <--- 1. Importar o componente Image
 // Importe APENAS a função (removida a interface Viagem)
 import { encontrarViagemPorSlug } from "@/data/viagens"; // <--- 2. Removida a importação de 'Viagem'
 
+// Define o tipo esperado para as props da página
+interface PageProps {
+  params: { slug: string };
+  // searchParams?: { [key: string]: string | string[] | undefined }; // Adicione se usar searchParams
+}
+
 // Componente ListaItem mantido igual
 const ListaItem = ({ children }: { children: React.ReactNode }) => (
   <li className="flex items-start mb-1">
@@ -14,9 +20,8 @@ const ListaItem = ({ children }: { children: React.ReactNode }) => (
   </li>
 );
 
-export default function DetalhesViagemPage({ params }: { params: { slug: string } }) {
+export default function DetalhesViagemPage({ params }: PageProps) {
   const viagem = encontrarViagemPorSlug(params.slug);
-
   if (!viagem) {
     notFound();
   }

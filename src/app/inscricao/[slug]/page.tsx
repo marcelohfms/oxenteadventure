@@ -16,8 +16,14 @@ interface Passageiro {
   telefone: string;
 }
 
-export default function InscricaoViagem({ params }: { params: { slug: string } }) {
-  const slug = params.slug; // Acesso direto
+// Define o tipo esperado para as props da página
+interface PageProps {
+  params: { slug: string };
+  // searchParams?: { [key: string]: string | string[] | undefined }; // Adicione se usar searchParams
+}
+
+export default function InscricaoViagem({ params }: PageProps) {
+  const slug = params.slug;
   const [assentosSelecionados, setAssentosSelecionados] = useState<string[]>([]);
   const [assentosOcupados, setAssentosOcupados] = useState<string[]>([]);
   const [passageiros, setPassageiros] = useState<Passageiro[]>([]);
