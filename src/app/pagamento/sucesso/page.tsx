@@ -79,7 +79,7 @@ function SuccessContent() {
            setErrorMessage("Não foi possível encontrar os dados da reserva na URL.")
         }
     }
-  }, [searchParams, saveStatus]); // Depende de searchParams e saveStatus para rodar só uma vez
+  }, [searchParams, saveStatus, loteId]); // Depende de searchParams e saveStatus para rodar só uma vez
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100">
