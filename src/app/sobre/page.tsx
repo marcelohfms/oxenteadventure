@@ -1,5 +1,4 @@
 // src/app/sobre/page.tsx
-import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header"; // Ajuste o caminho se necessário
 import Footer from "@/components/Footer"; // Ajuste o caminho se necessário
@@ -19,8 +18,6 @@ export default function SobreNosPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
             Sobre a Oxente Adventure
           </h1>
-
-          {/* ... (Seção da Imagem Opcional, Nossa Paixão, Nossos Pilares - MANTIDAS IGUAIS) ... */}
 
           {/* Seção: Nossa Paixão */}
           <section className="mb-10">
