@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; // Removido 'use'
 
+// --- Interfaces ---
 interface Reserva {
   nome: string;
   email: string;
   telefone: string;
-  assento: string | number | null; // Adjusted interface slightly for potential API response types
+  assento: string | number | null;
   viagem: string;
 }
-
 interface Passageiro {
   nome: string;
   email: string;
@@ -17,8 +17,7 @@ interface Passageiro {
 }
 
 export default function InscricaoViagem({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
-
+  const slug = params.slug; // Acesso direto
   const [assentosSelecionados, setAssentosSelecionados] = useState<string[]>([]);
   const [assentosOcupados, setAssentosOcupados] = useState<string[]>([]);
   const [passageiros, setPassageiros] = useState<Passageiro[]>([]);
