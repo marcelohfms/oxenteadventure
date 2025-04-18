@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";
 
 interface Reserva {
   nome: string;
@@ -16,8 +16,8 @@ interface Passageiro {
   telefone: string;
 }
 
-export default function InscricaoViagem({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = params.slug;
+export default function InscricaoViagem({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
 
   const [assentosSelecionados, setAssentosSelecionados] = useState<string[]>([]);
   const [assentosOcupados, setAssentosOcupados] = useState<string[]>([]);
