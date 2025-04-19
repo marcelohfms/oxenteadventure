@@ -16,16 +16,14 @@ interface Passageiro {
   telefone: string;
 }
 
-interface InscricaoViagemPageProps {
+// Tente APENAS com esta interface
+interface PageParams {
   params: { slug: string };
-  // É uma boa prática incluir searchParams, mesmo que opcional e não usado agora.
-  // Isso alinha melhor com o tipo esperado internamente pelo Next.js.
-  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-// --- Assinatura da Função Padronizada ---
-export default function InscricaoViagem({ params }: InscricaoViagemPageProps) {
-  const slug = params.slug; // Acesso continua o mesmo
+export default function InscricaoViagem({ params }: PageParams) {
+  const slug = params.slug;
+  // ... resto do código
 
   // --- Estados ---
   const [assentosSelecionados, setAssentosSelecionados] = useState<string[]>([]);
