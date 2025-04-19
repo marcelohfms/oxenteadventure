@@ -2,14 +2,13 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image"; // <--- 1. Importar o componente Image
-// Importe APENAS a função (removida a interface Viagem)
-import { encontrarViagemPorSlug } from "@/data/viagens"; // <--- 2. Removida a importação de 'Viagem'
+import Image from "next/image"; // Importação necessária
+// Importe APENAS a função
+import { encontrarViagemPorSlug } from "@/data/viagens"; // Interface Viagem removida
 
-interface ViagemProps {
+// Definindo o tipo das props diretamente
+interface DetalhesViagemPageProps {
   params: { slug: string };
-  // (se você não usar searchParams, ainda assim deixe como opcional)
-  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 // Componente ListaItem mantido igual
@@ -20,8 +19,9 @@ const ListaItem = ({ children }: { children: React.ReactNode }) => (
   </li>
 );
 
-export default function DetalhesViagemPage({ params }: ViagemProps) {
+export default function DetalhesViagemPage({ params }: DetalhesViagemPageProps) { // Usando a interface definida
   const viagem = encontrarViagemPorSlug(params.slug);
+
   if (!viagem) {
     notFound();
   }
@@ -29,38 +29,38 @@ export default function DetalhesViagemPage({ params }: ViagemProps) {
   const { detalhes } = viagem;
 
   return (
-    <div className="min-h-screen bg-beige-50 py-12 px-4 sm:px-6 lg:px-8">
+    // Usando cores padrão do Tailwind como fallback
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"> {/* Use bg-beige-50 se/quando config funcionar */}
       <div className="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg">
 
         {/* Título e Data */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-cactus-green-800 font-display mb-2 text-center">
+        {/* Use text-cactus-green-800 font-display se/quando config funcionar */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2 text-center">
           {viagem.titulo}
         </h1>
         <p className="text-center text-gray-600 font-semibold mb-6">{viagem.data}</p>
 
-        {/* Imagem Principal - ALTERAÇÃO AQUI */}
-        {/* Usando um container relativo para o Image com 'fill' */}
+        {/* Imagem Principal com <Image> */}
         <div className="relative w-full h-64 md:h-80 rounded-lg shadow-md overflow-hidden mb-8 bg-gray-100">
           <Image
             src={viagem.imagem}
             alt={viagem.titulo}
-            // fill={true} // Faz a imagem preencher o container pai (requer pai com position)
-            layout="fill" // Alternativa a 'fill' para Next.js mais antigo ou dependendo da config
-            objectFit="cover" // Equivalente a object-cover do Tailwind
-            className="rounded-lg" // Mantém as bordas arredondadas
-            priority // Pode ser útil para a imagem principal da página (LCP)
-            // Não precisa mais de w-full ou h-* aqui, pois 'fill' controla isso
-            // width e height não são usados com fill/layout="fill"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg" // Bordas aplicadas aqui
+            priority // Importante para LCP
           />
         </div>
-        {/* Fim da Alteração na Imagem */}
+        {/* Fim da Imagem Principal */}
 
 
         {/* Container para os Detalhes */}
-        <div className="space-y-6 text-gray-800 font-body text-base">
+         {/* Use text-gray-800 font-body se/quando config funcionar */}
+        <div className="space-y-6 text-gray-700 text-base">
           {/* Seção: Ponto de Encontro */}
           <div>
-            <h3 className="text-xl font-semibold text-cactus-green-700 mb-2 flex items-center">
+             {/* Use text-cactus-green-700 se/quando config funcionar */}
+            <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center">
               <span className="text-2xl mr-2">📌</span> Ponto de Encontro (Saída de João Pessoa)
             </h3>
             <ul className="pl-4">
@@ -73,13 +73,15 @@ export default function DetalhesViagemPage({ params }: ViagemProps) {
           {/* Seção: Horários */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <h3 className="text-xl font-semibold text-cactus-green-700 mb-1 flex items-center">
+               {/* Use text-cactus-green-700 se/quando config funcionar */}
+              <h3 className="text-xl font-semibold text-gray-700 mb-1 flex items-center">
                 <span className="text-2xl mr-2">⏳</span> Saída
               </h3>
               <p className="pl-8">{detalhes.horarioSaida}</p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-cactus-green-700 mb-1 flex items-center">
+               {/* Use text-cactus-green-700 se/quando config funcionar */}
+              <h3 className="text-xl font-semibold text-gray-700 mb-1 flex items-center">
                 <span className="text-2xl mr-2">⏳</span> Retorno Previsto
               </h3>
               <p className="pl-8">{detalhes.horarioRetorno}</p>
@@ -88,7 +90,8 @@ export default function DetalhesViagemPage({ params }: ViagemProps) {
 
           {/* Seção: Inclusos */}
           <div>
-            <h3 className="text-xl font-semibold text-cactus-green-700 mb-2 flex items-center">
+             {/* Use text-cactus-green-700 se/quando config funcionar */}
+            <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center">
               <span className="text-2xl mr-2">📦</span> Inclusos
             </h3>
             <ul className="pl-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4">
@@ -110,7 +113,8 @@ export default function DetalhesViagemPage({ params }: ViagemProps) {
           {/* Seção: Opcionais */}
           {detalhes.opcionais && detalhes.opcionais.length > 0 && (
             <div>
-              <h3 className="text-xl font-semibold text-cactus-green-700 mb-2 flex items-center">
+               {/* Use text-cactus-green-700 se/quando config funcionar */}
+              <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center">
                 <span className="text-2xl mr-2">🚨</span> Opcional (Pago à parte)
               </h3>
               <ul className="pl-4">
@@ -127,7 +131,8 @@ export default function DetalhesViagemPage({ params }: ViagemProps) {
 
           {/* Seção: O que levar */}
           <div>
-            <h3 className="text-xl font-semibold text-cactus-green-700 mb-2 flex items-center">
+             {/* Use text-cactus-green-700 se/quando config funcionar */}
+            <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center">
               <span className="text-2xl mr-2">🎒</span> O que levar?
             </h3>
             <ul className="pl-4">
@@ -149,8 +154,8 @@ export default function DetalhesViagemPage({ params }: ViagemProps) {
         <div className="mt-10 text-center">
           <Link
             href={`/inscricao/${params.slug}`}
-            className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-bold font-body text-lg transition duration-300 shadow-md hover:shadow-lg"
-            // className="inline-block bg-burnt-orange-600 hover:bg-burnt-orange-700 text-white px-8 py-3 rounded-full font-bold font-body text-lg transition duration-300 shadow-md hover:shadow-lg" // << Use este quando o config funcionar
+            // Use bg-burnt-orange-600 hover:bg-burnt-orange-700 se/quando config funcionar
+            className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-bold /*font-body*/ text-lg transition duration-300 shadow-md hover:shadow-lg"
           >
             Quero Participar!
           </Link>
