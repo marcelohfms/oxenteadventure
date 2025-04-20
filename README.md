@@ -6,7 +6,7 @@ Bem-vindo ao repositório da plataforma de reservas da Oxente Adventure! Este pr
 
 **🎯 Objetivo:** Facilitar a reserva online para passeios de aventura (trilhas, rapel, cachoeiras, etc.) oferecidos pela Oxente Adventure, com foco no público de João Pessoa-PB e região.
 
-**🔗 Link do Deploy (Exemplo):** [Insira o link da sua aplicação na Vercel aqui]
+**🔗 [Link do Deploy](https://oxenteadventure-d6ek-496ovu4p6-marcelos-projects-440501b0.vercel.app/)**
 
 ## ✨ Funcionalidades Principais
 
